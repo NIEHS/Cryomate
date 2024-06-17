@@ -1,0 +1,123 @@
+{
+  "camera": {
+    "temp_folder": "c:/temp/spraying_system/"
+  },
+
+  "rpi": {
+    "ip_address_Luis": "192.168.1.3",
+    "ip_address_Wyatt": "169.254.2.148",
+    "ip_address": "169.254.2.148",
+    "port": 8081,
+    "message_timeout_sec": 10,
+
+    "video_folder": "c:/temp/",
+    "video_startup_delay_msec": 2500,
+    "video_saving_delay_msec": 1000
+  },
+
+  "robot": {
+    "id_simulatorLuis": 9,
+    "id_Wyatt": 1,
+    "id": 1,
+    "simulation": false,
+    "defaultMotionParams": {
+      "speed": 100,
+      "accel": 100,
+      "decel": 100
+    },
+    "project": "C:\\EpsonRC70\\projects\\API_Demos\\Demo1\\demo1.sprj",
+    "locations": [
+      {
+        "name": "Home",
+        "point": 1,
+        "speed": 50,
+        "motiontype": "go"
+      },
+      {
+        "name": "Tweezers",
+        "point": 1,
+        "speed": 50,
+        "motiontype": "go"
+      },
+      {
+        "name": "Spray",
+        "point": 3,
+        "speed": 50,
+        "motiontype": "go"
+      },
+      {
+        "name": "Plunge",
+        "point": 4,
+        "speed": 100,
+        "motiontype": "go"
+      },
+      {
+        "name": "BackBlot",
+        "point": 5,
+        "speed": 100,
+        "motiontype": "go"
+      },
+      {
+        "name": "FrontBlot",
+        "point": 6,
+        "speed": 100,
+        "motiontype": "go"
+      },
+      {
+        "name": "GridStore1",
+        "point": 11,
+        "speed": 50
+      },
+      {
+        "name": "GridStore2",
+        "point": 12,
+        "speed": 50
+      },
+      {
+        "name": "GridStore3",
+        "point": 13,
+        "speed": 50
+      },
+      {
+        "name": "GridStore4",
+        "point": 14,
+        "speed": 50
+      },
+      {
+        "name": "GridStore5",
+        "point": 15,
+        "speed": 50
+      },
+      {
+        "name": "GridStore6",
+        "point": 16,
+        "speed": 50
+      },
+      {
+        "name": "GridStore7",
+        "point": 17,
+        "speed": 50
+      },
+      {
+        "name": "GridStore8",
+        "point": 18,
+        "speed": 50
+      }
+    ],
+
+    "gridStoreJumpParameters": {
+      "command": "LimZ -59"
+    }
+  },
+
+  "biojet_process": {
+    "prep_delay": 500,
+    "spray_time": 0,
+    "blot_time": 0,
+    "clean_time": 200,
+    "clean_cycles": 5,
+    "timeout_blot_motion": 200,
+    "blot_port": 9,
+    "spray_port": 8
+  }
+}
