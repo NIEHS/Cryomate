@@ -1,0 +1,152 @@
+﻿@model List<string>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <h1 class="display-4">Welcome</h1>
+
+    <!-- Log Section with Scrolling -->
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Logs</h2>
+            <div id="logContainer" style="height: 300px; overflow-y: auto; background-color: #f8f9fa; border: 1px solid #ccc; padding: 10px;">
+                @foreach (var log in Model)
+                {
+                    <div>@log</div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Command Buttons -->
+
+    <form id="processOptionsForm" onsubmit="event.preventDefault(); updateProcessOptions();">
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label><input type="checkbox" id="recordSpray" /> Record Spray</label>
+                <label><input type="checkbox" id="rpiRecordSpray" /> RPI Record Spray</label>
+                <label><input type="checkbox" id="spray" /> Spray</label>
+                <label><input type="checkbox" id="sonicateTweezers" /> Sonicate Tweezers</label>
+            </div>
+            <div class="col-md-3">
+                <label><input type="checkbox" id="blot" onchange="toggleBlotOptions();" /> Blot</label>
+                <label><input type="radio" name="blotType" value="back" id="backBlot" disabled /> Back Blot</label>
+                <label><input type="radio" name="blotType" value="front" id="frontBlot" disabled /> Front Blot</label>
+                <button type="submit">Save Options</button>
+            </div>
+        </div>
+    </form>
+
+
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <button onclick="sendCommand('MoveToLoadTweezers')" class="btn btn-primary">Load Tweezers</button>
+            <button onclick="sendCommand('MoveToSprayPosition')" class="btn btn-primary">Spray Position</button>
+        </div>
+
+        <div class="col-md-4">
+            <button onclick="sendCommand('EditConfigSettings')" class="btn btn-primary">Edit Config Settings</button>
+            <button onclick="sendCommand('CleanSprayer')" class="btn btn-primary">Clean Process</button>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <button onclick="sendCommand('ConnectToRPI')" class="btn btn-primary">Connect To RPI</button>
+            <button onclick="sendCommand('ConnectToCamera')" class="btn btn-primary">Connect To Camera</button>
+        </div>
+
+        <div class="col-md-4">
+            <button onclick="sendCommand('TakePicture')" class="btn btn-primary">Take Picture</button>
+            <button onclick="sendCommand('SavePicture')" class="btn btn-primary">Save Image</button>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <button onclick="sendCommand('ConnectCmd')" class="btn btn-success">Connect Robot</button>
+            <button onclick="sendCommand('HighPowerOn')" class="btn btn-success">High Power On</button>
+            <button onclick="sendCommand('PowerDown')" class="btn btn-danger">Power Down</button>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <button onclick="sendCommand('RobotManagerPresenter')" class="btn btn-info">Open Robot Manager</button>
+            <button onclick="sendCommand('IoMonitorPresenter')" class="btn btn-info">Open I/O Monitor</button>
+            <button onclick="sendCommand('PointTeachingPresenter')" class="btn btn-secondary">Open Point Teaching</button>
+            <button onclick="sendCommand('ControllerToolsPresenter')" class="btn btn-secondary">Open Controller Tools</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.11/signalr.min.js"></script>
+<script>
+    const logContainer = document.getElementById('logContainer');
+
+    function scrollToBottom() {
+        logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/logHub")
+        .build();
+
+    connection.on("ReceiveLog", function (log) {
+        const div = document.createElement("div");
+        div.textContent = log;
+        logContainer.appendChild(div);
+        scrollToBottom();
+    });
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    function sendCommand(command) {
+        fetch(`/api/Robot/${command}`, {
+            method: 'POST'
+        }).then(response => {
+            if (response.ok) {
+                alert(`${command} command executed successfully.`);
+            } else {
+                alert(`Failed to execute ${command} command.`);
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+            alert(`Error executing ${command} command.`);
+        });
+    }
+
+    function updateProcessOptions() {
+        const options = {
+            RecordSpray: document.getElementById('recordSpray').checked,
+            RpiRecordSpray: document.getElementById('rpiRecordSpray').checked,
+            Spray: document.getElementById('spray').checked,
+            SonicateTweezers: document.getElementById('sonicateTweezers').checked,
+            Blot: document.getElementById('blot').checked,
+            Blot_BackBlot: document.getElementById('backBlot').checked,
+            Blot_FrontBlot: document.getElementById('frontBlot').checked
+        };
+
+        fetch('/api/Robot/UpdateProcessOptions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(options)
+        }).then(response => {
+            if (response.ok) {
+                alert('Process options updated successfully.');
+            } else {
+                alert('Failed to update options.');
+            }
+        }).catch(error => console.error('Error updating options:', error));
+    }
+
+    function toggleBlotOptions() {
+        const blotChecked = document.getElementById('blot').checked;
+        document.getElementById('backBlot').disabled = !blotChecked;
+        document.getElementById('frontBlot').disabled = !blotChecked;
+    }
+
+</script>
