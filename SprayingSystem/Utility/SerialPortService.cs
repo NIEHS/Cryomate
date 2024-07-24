@@ -17,7 +17,7 @@ public class SerialPortService
 
     public void Start()
     {
-        _serialPort.Open();
+        //_serialPort.Open();
     }
 
     private void SerialPortDataReceived(object sender, SerialDataReceivedEventArgs e)
