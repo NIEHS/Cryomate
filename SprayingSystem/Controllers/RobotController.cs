@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.SignalR;
 using SprayingSystem.Models;
 using SprayingSystem.ViewModels;
+using System.IO;
+using System.IO.Ports;
 
 namespace SprayingSystem.Controllers
 {
@@ -11,11 +13,15 @@ namespace SprayingSystem.Controllers
     {
         private readonly IHubContext<LogHub> _hubContext;
         private readonly AppViewModel _appViewModel;
+        private readonly SerialPortService _serialPortService;
+        private readonly RecordingService _recordingService;
 
-        public RobotController(AppViewModel appViewModel, IHubContext<LogHub> hubContext)
+        public RobotController(AppViewModel appViewModel, IHubContext<LogHub> hubContext, SerialPortService serialPortService, RecordingService recordingService)
         {
             _appViewModel = appViewModel;
             _hubContext = hubContext;
+            _serialPortService = serialPortService;
+            _recordingService = recordingService;
         }
 
         // Robot Actions
@@ -191,6 +197,106 @@ namespace SprayingSystem.Controllers
             await _hubContext.Clients.All.SendAsync("ReceiveLog", logMessage);
             return Ok();
         }
+
+        // Serial Port (Arduino) Actions
+        [HttpPost("StartSerialPort")]
+        public IActionResult StartSerialPort([FromBody] string comPort)
+        {
+            try
+            {
+                if (_serialPortService.Start(comPort))
+                    return Ok();
+                else
+                    return BadRequest("Could not open COM port. Check if the port is already in use or if the device is connected properly.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPost("StopSerialPort")]
+        public IActionResult StopSerialPort()
+        {
+            _serialPortService.Stop();
+            return Ok();
+        }
+
+        [HttpGet("AvailableSerialPorts")]
+        public IActionResult GetAvailablePorts()
+        {
+            var ports = SerialPort.GetPortNames();
+            _appViewModel.LogAction("Available ports: " + string.Join(", ", ports));
+            return Ok(ports);
+        }
+
+        // Recording Actions
+        [HttpPost("StartRecording")]
+        public IActionResult StartRecording()
+        {
+            _recordingService.StartRecording();
+            return Ok();
+        }
+
+        [HttpPost("StopRecording")]
+        public IActionResult StopRecording()
+        {
+            _recordingService.StopRecording();
+            return Ok();
+        }
+
+        [HttpGet("ListRecordings")]
+        public IActionResult ListRecordings()
+        {
+            var recordings = _recordingService.GetAvailableRecordings();
+            var recordingFiles = recordings.Select(Path.GetFileName).ToArray();
+            return Ok(recordingFiles);
+        }
+
+        [HttpGet("DownloadRecording/{fileName}")]
+        public IActionResult DownloadRecording(string fileName)
+        {
+            var filePath = _recordingService.GetRecordingFilePath(fileName);
+            if (System.IO.File.Exists(filePath))
+            {
+                var bytes = System.IO.File.ReadAllBytes(filePath);
+                return File(bytes, "application/octet-stream", fileName);
+            }
+            return NotFound();
+        }
+
+
+        [HttpPost("UpdateGridInfo")]
+        public IActionResult UpdateGridInfo([FromBody] GridInfo gridInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                _appViewModel.GridViewModel.GridBoxName = gridInfo.BoxName;
+                _appViewModel.GridViewModel.SampleName = gridInfo.SampleName;
+                _appViewModel.GridViewModel.GridPosition = gridInfo.Position;
+                return Ok();
+            }
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost("StoreGrid")]
+        public IActionResult StoreGrid()
+        {
+            _appViewModel.GridViewModel.StoreGridCmd.Execute(null);
+            return Ok();
+        }
+
+        [HttpPost("ConnectToCamera")]
+        public async Task<IActionResult> ConnectToCamera()
+        {
+            var logMessage = "Connecting to Camera...";
+            _appViewModel.LogAction(logMessage);
+            _appViewModel.CameraViewModel.ConnectCmd.Execute(null);
+
+            await _hubContext.Clients.All.SendAsync("ReceiveLog", logMessage);
+            return Ok();
+        }
+
 
         // Process Options Actions
 

@@ -29,7 +29,7 @@ namespace SprayingSystem.SprayingProcess
                 // Thread.Sleep(RpiViewModel.VideoStartUpDelayMillisec);
             }
 
-            // this time should be only the spray time + preparation delay
+            // this time should be only the spray time + preparation delay (this should always be equal to prep_delay since raspberry pi is not used)
             int totalWaitTime = TotalTimeToWaitForSpraying(ProcessOptionsViewModel, RobotVariablesModel);
 
             if (ProcessOptionsViewModel.Spray)

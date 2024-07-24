@@ -1,23 +1,25 @@
 using SprayingSystem.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var inMemoryLogProvider = new InMemoryLogProvider();
 builder.Logging.AddProvider(inMemoryLogProvider);
 builder.Services.AddSingleton(inMemoryLogProvider);  // Make it available for DI
-builder.Services.AddSingleton<SerialPortService>();
 
 // Add services to the container.
 builder.Services.AddSignalR();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<AppViewModel>();
+builder.Services.AddSingleton<SerialPortService>();
+builder.Services.AddSingleton<RecordingService>();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
 var app = builder.Build();
 
+// Ensure SerialPortService and RecordingService are initialized
 var serialService = app.Services.GetRequiredService<SerialPortService>();
-serialService.Start();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

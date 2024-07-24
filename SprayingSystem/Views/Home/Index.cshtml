@@ -5,78 +5,125 @@
 }
 
 <div class="container">
-    <h1 class="display-4">Welcome</h1>
-
-    <!-- Log Section with Scrolling -->
     <div class="row">
-        <div class="col-md-8">
-            <h2>Logs</h2>
-            <div id="logContainer" style="height: 300px; overflow-y: auto; background-color: #f8f9fa; border: 1px solid #ccc; padding: 10px;">
-                @foreach (var log in Model)
-                {
-                    <div>@log</div>
-                }
+        <!-- Log Section with Scrolling -->
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="logContainer" style="height: 300px; overflow-y: auto; background-color: #f8f9fa; border: 1px solid #ccc; padding: 10px;">
+                        @foreach (var log in Model)
+                        {
+                            <div>@log</div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 mt-2">
+                    <div style="display: flex; justify-content: space-between;">
+                        <button onclick="sendCommand('ConnectCmd')" class="btn btn-success">Connect Robot</button>
+                        <button onclick="sendCommand('HighPowerOn')" class="btn btn-success">High Power On</button>
+                        <button onclick="sendCommand('PowerDown')" class="btn btn-danger">Power Down</button>
+                        <button onclick="sendCommand('Reset')" class="btn btn-warning">Reset</button>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div style="display: flex; justify-content: space-between;">
+                        <button onclick="sendCommand('RobotManagerPresenter')" class="btn btn-info">Robot Manager</button>
+                        <button onclick="sendCommand('IoMonitorPresenter')" class="btn btn-info">I/O Monitor</button>
+                        <button onclick="sendCommand('PointTeachingPresenter')" class="btn btn-secondary">Point Teaching</button>
+                        <button onclick="sendCommand('ControllerToolsPresenter')" class="btn btn-secondary">Controller Tools</button>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div style="display: flex; justify-content: space-between;">
+                        <label><input type="checkbox" id="recordSpray" /> Record Spray</label>
+                        <label><input type="checkbox" id="spray" /> Spray</label>
+                        <label><input type="checkbox" id="blot" onchange="toggleBlotOptions();" /> Blot</label>
+                        <label><input type="radio" name="blotType" value="back" id="backBlot" disabled /> Back Blot</label>
+                        <label><input type="radio" name="blotType" value="front" id="frontBlot" disabled /> Front Blot</label>
+                        <button type="submit" onclick="updateProcessOptions()">Save Options</button>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div style="display: flex; justify-content: space-between;">
+                        <input type="text" id="gridBoxName" class="form-control" placeholder="Grid Box Name" style="margin-right: 10px;" onchange="updateGridInfo()" />
+                        <input type="text" id="sampleName" class="form-control" placeholder="Sample Name" style="margin-right: 10px;" onchange="updateGridInfo()" />
+                        <input type="number" id="gridPosition" class="form-control" placeholder="Grid Position" min="1" max="8" onchange="updateGridInfo()" />
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-2">
+                    <div style="display: flex; justify-content: space-between;">
+                        <button onclick="sendCommand('MoveToLoadTweezers')" class="btn btn-primary">Load Tweezers</button>
+                        <button onclick="sendCommand('MoveToSprayPosition')" class="btn btn-primary">Spray Position</button>
+                        <button onclick="sendCommand('PlungeProcess')" class="btn btn-primary">Plunge Process</button>
+                        <button onclick="storeGrid()" class="btn btn-primary">Store Grid</button>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-2">
+                    <div style="display: flex; justify-content: space-between;">
+                        <button onclick="sendCommand('ConnectToCamera')" class="btn btn-primary">Connect To Camera</button>
+                        <button onclick="sendCommand('TakePicture')" class="btn btn-primary">Take Picture</button>
+                        <button onclick="sendCommand('SavePicture')" class="btn btn-primary">Save Image</button>
+                        <button onclick="sendCommand('EditConfigSettings')" class="btn btn-primary">Edit Config Settings</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Command Buttons -->
-
-    <form id="processOptionsForm" onsubmit="event.preventDefault(); updateProcessOptions();">
-        <div class="row mt-4">
-            <div class="col-md-3">
-                <label><input type="checkbox" id="recordSpray" /> Record Spray</label>
-                <label><input type="checkbox" id="rpiRecordSpray" /> RPI Record Spray</label>
-                <label><input type="checkbox" id="spray" /> Spray</label>
-                <label><input type="checkbox" id="sonicateTweezers" /> Sonicate Tweezers</label>
+        <!-- Serial Port and Sensor Data Section -->
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="messages" style="height: 300px; overflow-y: auto; background-color: #f8f9fa; border: 1px solid #ccc; padding: 10px;"></div>
+                </div>
             </div>
-            <div class="col-md-3">
-                <label><input type="checkbox" id="blot" onchange="toggleBlotOptions();" /> Blot</label>
-                <label><input type="radio" name="blotType" value="back" id="backBlot" disabled /> Back Blot</label>
-                <label><input type="radio" name="blotType" value="front" id="frontBlot" disabled /> Front Blot</label>
-                <button type="submit">Save Options</button>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div style="display: flex; justify-content: space-between;">
+                        <button onclick="startCommunication()" class="btn btn-primary">Start Serial Log</button>
+                        <button onclick="stopCommunication()" class="btn btn-primary">Stop Serial Log</button>
+                        <button onclick="restartCommunication()" class="btn btn-primary">Restart Serial Log</button>
+                    </div>
+                    <select id="comPortSelect" class="form-control"></select>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div style="display: flex; justify-content: space-between;">
+                        <button onclick="startRecording()" class="btn btn-primary">Start Recording</button>
+                        <button onclick="stopRecording()" class="btn btn-primary">Stop Recording</button>
+                        <button onclick="listRecordings()" class="btn btn-primary">List Recordings</button>
+                        <button onclick="downloadRecording()" class="btn btn-primary">Download Recording</button>
+                    </div>
+                    <select id="recordingSelect" class="form-control"></select>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div style="display: flex; justify-content: space-between;">
+                        <p>Time: <span id="time"></span></p>
+                        <p>Temperature: <span id="temperature"></span></p>
+                        <p>Humidity: <span id="humidity"></span></p>
+                        <p>Pressure: <span id="pressure"></span></p>
+                        <p>IR Sensor: <span id="irSensor"></span></p>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <div style="display: flex; justify-content: center; align-items: center; height: 300px;">
+                        <div class="border border-dark-cyan" style="border-width: 2px;">
+                            <img src="~/duck.jpg" style="width: 300px; height: 300px; object-fit: cover;" />
+                        </div>
+                        <div class="border border-dark-cyan" style="border-width: 2px;">
+                            <div style="position: relative; width: 300px; height: 300px; overflow: hidden;">
+                                <video style="width: 100%; height: 100%; object-fit: cover;" autoplay loop muted>
+                                    <source src="~/ducks.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <button style="position: absolute; bottom: 10px; right: 10px; width: 30px; height: 20px;">Play</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </form>
-
-
-
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <button onclick="sendCommand('MoveToLoadTweezers')" class="btn btn-primary">Load Tweezers</button>
-            <button onclick="sendCommand('MoveToSprayPosition')" class="btn btn-primary">Spray Position</button>
-        </div>
-
-        <div class="col-md-4">
-            <button onclick="sendCommand('EditConfigSettings')" class="btn btn-primary">Edit Config Settings</button>
-            <button onclick="sendCommand('CleanSprayer')" class="btn btn-primary">Clean Process</button>
-        </div>
-    </div>
-
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <button onclick="sendCommand('ConnectToRPI')" class="btn btn-primary">Connect To RPI</button>
-            <button onclick="sendCommand('ConnectToCamera')" class="btn btn-primary">Connect To Camera</button>
-        </div>
-
-        <div class="col-md-4">
-            <button onclick="sendCommand('TakePicture')" class="btn btn-primary">Take Picture</button>
-            <button onclick="sendCommand('SavePicture')" class="btn btn-primary">Save Image</button>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <button onclick="sendCommand('ConnectCmd')" class="btn btn-success">Connect Robot</button>
-            <button onclick="sendCommand('HighPowerOn')" class="btn btn-success">High Power On</button>
-            <button onclick="sendCommand('PowerDown')" class="btn btn-danger">Power Down</button>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-8">
-            <button onclick="sendCommand('RobotManagerPresenter')" class="btn btn-info">Open Robot Manager</button>
-            <button onclick="sendCommand('IoMonitorPresenter')" class="btn btn-info">Open I/O Monitor</button>
-            <button onclick="sendCommand('PointTeachingPresenter')" class="btn btn-secondary">Open Point Teaching</button>
-            <button onclick="sendCommand('ControllerToolsPresenter')" class="btn btn-secondary">Open Controller Tools</button>
         </div>
     </div>
 </div>
@@ -98,6 +145,21 @@
         div.textContent = log;
         logContainer.appendChild(div);
         scrollToBottom();
+    });
+
+    connection.on("ReceiveSensorData", function (sensorData) {
+        console.log("Received data:", sensorData);
+        const time = sensorData.time;
+        document.getElementById('time').textContent = time;
+        document.getElementById('temperature').textContent = sensorData.temperature + ' °C';
+        document.getElementById('humidity').textContent = sensorData.humidity + ' %';
+        document.getElementById('pressure').textContent = sensorData.pressure + ' hPa';
+        document.getElementById('irSensor').textContent = sensorData.irSensorState;
+        addLogEntry(time, sensorData);
+
+        if (recording) {
+            recordedData.push({ time, ...sensorData });
+        }
     });
 
     connection.start().catch(function (err) {
@@ -149,4 +211,121 @@
         document.getElementById('frontBlot').disabled = !blotChecked;
     }
 
+    function updateGridInfo() {
+        const gridInfo = {
+            GridBoxName: document.getElementById('gridBoxName').value,
+            SampleName: document.getElementById('sampleName').value,
+            GridPosition: document.getElementById('gridPosition').value
+        };
+
+        fetch('/api/Robot/UpdateGridInfo', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(gridInfo)
+        }).then(response => {
+            if (response.ok) {
+                alert('Grid information updated successfully.');
+            } else {
+                alert('Failed to update grid information.');
+            }
+        }).catch(error => console.error('Error updating grid information:', error));
+    }
+
+    function storeGrid() {
+        fetch('/api/Robot/StoreGrid', { method: 'POST' })
+            .then(response => {
+                if (response.ok) {
+                    alert('Grid stored successfully.');
+                } else {
+                    alert('Failed to store grid.');
+                }
+            })
+            .catch(error => console.error('Error storing grid:', error));
+    }
+
+    function startCommunication() {
+        const comPort = document.getElementById("comPortSelect").value;
+        fetch('/api/Robot/StartSerialPort', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(comPort)
+        }).then(response => {
+            if (response.ok) {
+                clearLogs();
+            } else {
+                response.text().then(text => alert(`Failed to start communication: ${text}`));
+            }
+        });
+    }
+
+    function stopCommunication() {
+        fetch('/api/Robot/StopSerialPort', { method: 'POST' });
+    }
+
+    function fetchPorts() {
+        fetch('/api/Robot/AvailableSerialPorts', { method: 'GET' })
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById("comPortSelect");
+                select.innerHTML = '';
+                data.forEach(port => {
+                    const option = document.createElement("option");
+                    option.value = port;
+                    option.textContent = port;
+                    select.appendChild(option);
+                });
+            });
+    }
+
+    function restartCommunication() {
+        stopCommunication();
+        clearLogs();
+        startCommunication();
+    }
+
+    function clearLogs() {
+        document.getElementById('messages').innerHTML = '';
+    }
+
+    function startRecording() {
+        recording = true;
+        fetch('/api/Robot/StartRecording', { method: 'POST' });
+    }
+
+    function stopRecording() {
+        recording = false;
+        fetch('/api/Robot/StopRecording', { method: 'POST' });
+    }
+
+    function listRecordings() {
+        fetch('/api/Robot/ListRecordings')
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById("recordingSelect");
+                select.innerHTML = '';
+                data.forEach(file => {
+                    const option = document.createElement("option");
+                    option.value = file;
+                    option.textContent = file;
+                    select.appendChild(option);
+                });
+            });
+    }
+
+    function downloadRecording() {
+        const fileName = document.getElementById("recordingSelect").value;
+        window.location.href = `/api/Robot/DownloadRecording/${fileName}`;
+    }
+
+    function addLogEntry(time, data) {
+        const logContainer = document.getElementById('messages');
+        const logEntry = document.createElement('div');
+        logEntry.textContent = `${time} - Temperature: ${data.temperature} °C, Humidity: ${data.humidity} %, Pressure: ${data.pressure} hPa, IR Sensor: ${data.irSensorState}`;
+        logContainer.appendChild(logEntry);
+        logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    window.onload = function () {
+        fetchPorts();
+    };
 </script>
