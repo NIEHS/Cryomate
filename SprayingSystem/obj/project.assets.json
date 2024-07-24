@@ -2559,19 +2559,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mft63\\.nuget\\packages\\": {}
+    "C:\\Users\\Nilufer-PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystem.csproj",
+      "projectUniqueName": "C:\\Users\\Public\\GithubDesktop\\Cryomate\\SprayingSystem\\SprayingSystem.csproj",
       "projectName": "SprayingSystem",
-      "projectPath": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystem.csproj",
-      "packagesPath": "C:\\Users\\mft63\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\obj\\",
+      "projectPath": "C:\\Users\\Public\\GithubDesktop\\Cryomate\\SprayingSystem\\SprayingSystem.csproj",
+      "packagesPath": "C:\\Users\\Nilufer-PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Public\\GithubDesktop\\Cryomate\\SprayingSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mft63\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nilufer-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2658,7 +2658,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }
