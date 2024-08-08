@@ -40,6 +40,11 @@ namespace SprayingSystem.Models
             tempOptions.CopyTo(Options);
         }
 
+        public void SaveSprayingSystemConfiguration()
+        {
+            Options.Save(SprayingSystemConfig.FileName);
+        }
+
         private void SetUserOptionsCamera()
         {
             // TODO: User Options - save / load from file? _tempImageFolder = Options.camera.temp_folder;

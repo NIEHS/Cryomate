@@ -4,13 +4,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container">
+<div class="container mt-4">
     <div class="row">
         <!-- Log Section with Scrolling -->
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="logContainer" style="height: 300px; overflow-y: auto; background-color: #f8f9fa; border: 1px solid #ccc; padding: 10px;">
+                    <div id="logContainer" class="p-3 bg-light border rounded" style="height: 300px; overflow-y: auto;">
                         @foreach (var log in Model)
                         {
                             <div>@log</div>
@@ -19,8 +19,8 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-md-12 mt-2">
-                    <div style="display: flex; justify-content: space-between;">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between gap-2">
                         <button onclick="sendCommand('ConnectCmd')" class="btn btn-success">Connect Robot</button>
                         <button onclick="sendCommand('HighPowerOn')" class="btn btn-success">High Power On</button>
                         <button onclick="sendCommand('PowerDown')" class="btn btn-danger">Power Down</button>
@@ -28,47 +28,99 @@
                     </div>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <div style="display: flex; justify-content: space-between;">
-                        <button onclick="sendCommand('RobotManagerPresenter')" class="btn btn-info">Robot Manager</button>
-                        <button onclick="sendCommand('IoMonitorPresenter')" class="btn btn-info">I/O Monitor</button>
+                    <div class="d-flex justify-content-between gap-2">
+                        <button onclick="sendCommand('RobotManagerPresenter')" class="btn btn-secondary">Robot Manager</button>
+                        <button onclick="sendCommand('IoMonitorPresenter')" class="btn btn-secondary">I/O Monitor</button>
                         <button onclick="sendCommand('PointTeachingPresenter')" class="btn btn-secondary">Point Teaching</button>
                         <button onclick="sendCommand('ControllerToolsPresenter')" class="btn btn-secondary">Controller Tools</button>
                     </div>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <div style="display: flex; justify-content: space-between;">
-                        <label><input type="checkbox" id="recordSpray" /> Record Spray</label>
-                        <label><input type="checkbox" id="spray" /> Spray</label>
-                        <label><input type="checkbox" id="blot" onchange="toggleBlotOptions();" /> Blot</label>
-                        <label><input type="radio" name="blotType" value="back" id="backBlot" disabled /> Back Blot</label>
-                        <label><input type="radio" name="blotType" value="front" id="frontBlot" disabled /> Front Blot</label>
-                        <button type="submit" onclick="updateProcessOptions()">Save Options</button>
+                    <div style="display: flex; justify-content: space-between; gap: 10px;">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="recordSpray">
+                            <label class="form-check-label" for="recordSpray">Record Spray</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="spray">
+                            <label class="form-check-label" for="spray">Spray</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="blot" onchange="toggleBlotOptions();">
+                            <label class="form-check-label" for="blot">Blot</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="blotType" value="back" id="backBlot" disabled>
+                            <label class="form-check-label" for="backBlot">Back Blot</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="blotType" value="front" id="frontBlot" disabled>
+                            <label class="form-check-label" for="frontBlot">Front Blot</label>
+                        </div>
+                        <button type="submit" onclick="updateProcessOptions()" class="btn btn-secondary">Save Options</button>
                     </div>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <div style="display: flex; justify-content: space-between;">
-                        <input type="text" id="gridBoxName" class="form-control" placeholder="Grid Box Name" style="margin-right: 10px;" onchange="updateGridInfo()" />
-                        <input type="text" id="sampleName" class="form-control" placeholder="Sample Name" style="margin-right: 10px;" onchange="updateGridInfo()" />
-                        <input type="number" id="gridPosition" class="form-control" placeholder="Grid Position" min="1" max="8" onchange="updateGridInfo()" />
+                    <div class="d-flex justify-content-between gap-2">
+                        <input type="text" id="gridBoxName" class="form-control" placeholder="Grid Box Name" />
+                        <input type="text" id="sampleName" class="form-control" placeholder="Sample Name" />
+                        <input type="number" id="gridPosition" class="form-control" placeholder="Grid Position" min="1" max="8" onchange="fetchGridInfo()" />
+                        <button class="btn btn-primary" onclick="updateGridInfo()">Save Grid Info</button>
                     </div>
                 </div>
-
                 <div class="col-md-12 mt-2">
-                    <div style="display: flex; justify-content: space-between;">
-                        <button onclick="sendCommand('MoveToLoadTweezers')" class="btn btn-primary">Load Tweezers</button>
-                        <button onclick="sendCommand('MoveToSprayPosition')" class="btn btn-primary">Spray Position</button>
-                        <button onclick="sendCommand('PlungeProcess')" class="btn btn-primary">Plunge Process</button>
-                        <button onclick="storeGrid()" class="btn btn-primary">Store Grid</button>
+                    <div class="d-flex justify-content-between gap-2">
+                        <button onclick="sendCommand('MoveToLoadTweezers')" class="btn btn-secondary">Load Tweezers</button>
+                        <button onclick="sendCommand('MoveToSprayPosition')" class="btn btn-secondary">Spray Position</button>
+                        <button onclick="sendCommand('PlungeProcess')" class="btn btn-secondary">Plunge Process</button>
+                        <button onclick="storeGrid()" class="btn btn-secondary">Store Grid</button>
                     </div>
                 </div>
-
-                <div class="col-md-12 mt-2">
-                    <div style="display: flex; justify-content: space-between;">
-                        <button onclick="sendCommand('ConnectToCamera')" class="btn btn-primary">Connect To Camera</button>
-                        <button onclick="sendCommand('TakePicture')" class="btn btn-primary">Take Picture</button>
-                        <button onclick="sendCommand('SavePicture')" class="btn btn-primary">Save Image</button>
-                        <button onclick="sendCommand('EditConfigSettings')" class="btn btn-primary">Edit Config Settings</button>
-                    </div>
+                <div class="col-md-12 mt-4">
+                    <h2>Update Configuration</h2>
+                    <form id="configForm" onsubmit="event.preventDefault(); updateConfig();">
+                        <div class="form-group">
+                            <label for="prep_delay">Prep Delay:</label>
+                            <input type="number" id="prep_delay" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="spray_time">Spray Time:</label>
+                            <input type="number" id="spray_time" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="blot_time">Blot Time:</label>
+                            <input type="number" id="blot_time" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="clean_time">Clean Time:</label>
+                            <input type="number" id="clean_time" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="clean_cycles">Clean Cycles:</label>
+                            <input type="number" id="clean_cycles" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="timeout_blot_motion">Timeout Blot Motion:</label>
+                            <input type="number" id="timeout_blot_motion" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="limz">Grid Store Jump Parameter (LimZ):</label>
+                            <input type="number" id="limz" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="speed">Default Motion Speed:</label>
+                            <input type="number" id="speed" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="accel">Default Motion Acceleration:</label>
+                            <input type="number" id="accel" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="decel">Default Motion Deceleration:</label>
+                            <input type="number" id="decel" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Configuration</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -76,49 +128,90 @@
         <!-- Serial Port and Sensor Data Section -->
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-12">
-                    <div id="messages" style="height: 300px; overflow-y: auto; background-color: #f8f9fa; border: 1px solid #ccc; padding: 10px;"></div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-12">
-                    <div style="display: flex; justify-content: space-between;">
-                        <button onclick="startCommunication()" class="btn btn-primary">Start Serial Log</button>
-                        <button onclick="stopCommunication()" class="btn btn-primary">Stop Serial Log</button>
-                        <button onclick="restartCommunication()" class="btn btn-primary">Restart Serial Log</button>
-                    </div>
-                    <select id="comPortSelect" class="form-control"></select>
+                <div class="col-md-12 mt-2">
+                    <div id="messages" class="p-3 bg-light border rounded" style="height: 300px; overflow-y: auto;"></div>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <div style="display: flex; justify-content: space-between;">
-                        <button onclick="startRecording()" class="btn btn-primary">Start Recording</button>
-                        <button onclick="stopRecording()" class="btn btn-primary">Stop Recording</button>
-                        <button onclick="listRecordings()" class="btn btn-primary">List Recordings</button>
-                        <button onclick="downloadRecording()" class="btn btn-primary">Download Recording</button>
+                    <div class="d-flex justify-content-between gap-2">
+                        <button onclick="startCommunication()" class="btn btn-success">Start Serial Log</button>
+                        <button onclick="stopCommunication()" class="btn btn-danger">Stop Serial Log</button>
+                        <button onclick="restartCommunication()" class="btn btn-warning">Restart Serial Log</button>
                     </div>
-                    <select id="recordingSelect" class="form-control"></select>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <div style="display: flex; justify-content: space-between;">
-                        <p>Time: <span id="time"></span></p>
-                        <p>Temperature: <span id="temperature"></span></p>
-                        <p>Humidity: <span id="humidity"></span></p>
-                        <p>Pressure: <span id="pressure"></span></p>
-                        <p>IR Sensor: <span id="irSensor"></span></p>
+                    <div class="d-flex justify-content-between gap-2">
+                        <select id="comPortSelect" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="d-flex justify-content-between gap-2">
+                        <button onclick="startRecording()" class="btn btn-success">Start Recording</button>
+                        <button onclick="stopRecording()" class="btn btn-danger">Stop Recording</button>
+                        <button onclick="listRecordings()" class="btn btn-secondary">List Recordings</button>
+                        <button onclick="downloadRecording()" class="btn btn-secondary">Download Recording</button>
+                    </div>
+                    <select id="recordingSelect" class="form-control mt-2"></select>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="card bg-light border rounded p-3">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5>Time:</h5>
+                                <p id="time" class="mb-0"></p>
+                            </div>
+                            <div>
+                                <h5>Temperature:</h5>
+                                <p id="temperature" class="mb-0"></p>
+                            </div>
+                            <div>
+                                <h5>Humidity:</h5>
+                                <p id="humidity" class="mb-0"></p>
+                            </div>
+                            <div>
+                                <h5>Pressure:</h5>
+                                <p id="pressure" class="mb-0"></p>
+                            </div>
+                            <div>
+                                <h5>IR Sensor:</h5>
+                                <p id="irSensor" class="mb-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="d-flex justify-content-between gap-2">
+                        <button onclick="sendCommand('ConnectToCamera')" class="btn btn-success">Connect To Camera</button>
+                        <button onclick="sendCommand('TakePicture')" class="btn btn-secondary">Take Picture</button>
+                        <button onclick="sendCommand('SavePicture')" class="btn btn-secondary">Save Image</button>
+                        <button onclick="listMedia()" class="btn btn-secondary">List Media</button>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="d-flex justify-content-between gap-2">
+                        <button onclick="displaySelectedImage()" class="btn btn-secondary">Display Image</button>
+                        <button onclick="downloadSelectedImage()" class="btn btn-secondary">Download Image</button>
+                        <button onclick="displaySelectedVideo()" class="btn btn-secondary">Display Video</button>
+                        <button onclick="downloadSelectedVideo()" class="btn btn-secondary">Download Video</button>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="d-flex justify-content-between gap-2">
+                        <select id="imageSelect" class="form-control"></select>
+                        <select id="videoSelect" class="form-control"></select>
                     </div>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <div style="display: flex; justify-content: center; align-items: center; height: 300px;">
+                    <div class="d-flex justify-content-center align-items-center gap-2">
                         <div class="border border-dark-cyan" style="border-width: 2px;">
-                            <img src="~/duck.jpg" style="width: 300px; height: 300px; object-fit: cover;" />
+                            <img id="displayImage" src="~/duck.jpg" class="rounded" style="width: 300px; height: 300px; object-fit: cover;" />
                         </div>
                         <div class="border border-dark-cyan" style="border-width: 2px;">
-                            <div style="position: relative; width: 300px; height: 300px; overflow: hidden;">
-                                <video style="width: 100%; height: 100%; object-fit: cover;" autoplay loop muted>
+                            <div class="position-relative" style="width: 300px; height: 300px; overflow: hidden;">
+                                <video id="displayVideo" class="rounded" style="width: 100%; height: 100%; object-fit: cover;" autoplay loop muted>
                                     <source src="~/ducks.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                                <button style="position: absolute; bottom: 10px; right: 10px; width: 30px; height: 20px;">Play</button>
+                                <button class="btn btn-secondary position-absolute" style="bottom: 10px; right: 10px; width: 30px; height: 20px;">Play</button>
                             </div>
                         </div>
                     </div>
@@ -212,23 +305,36 @@
     }
 
     function updateGridInfo() {
-        const gridInfo = {
-            GridBoxName: document.getElementById('gridBoxName').value,
-            SampleName: document.getElementById('sampleName').value,
-            GridPosition: document.getElementById('gridPosition').value
-        };
+        const gridBoxName = document.getElementById('gridBoxName').value;
+        const sampleName = document.getElementById('sampleName').value;
+        const gridPosition = document.getElementById('gridPosition').value;
 
-        fetch('/api/Robot/UpdateGridInfo', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(gridInfo)
-        }).then(response => {
-            if (response.ok) {
-                alert('Grid information updated successfully.');
-            } else {
-                alert('Failed to update grid information.');
-            }
-        }).catch(error => console.error('Error updating grid information:', error));
+        fetch('/api/Robot/GetConfig')
+            .then(response => response.json())
+            .then(config => {
+                const gridLocationIndex = config.robot.locations.findIndex(loc => loc.name === `GridStore${gridPosition}`);
+                if (gridLocationIndex !== -1) {
+                    config.robot.locations[gridLocationIndex].name = gridBoxName;
+                    config.robot.locations[gridLocationIndex].sampleName = sampleName;
+                    config.robot.locations[gridLocationIndex].point = parseInt(gridPosition);
+                }
+
+                // Send the updated configuration back to the server
+                fetch('/api/Robot/UpdateConfig', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(config)
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Grid information updated successfully.');
+                        } else {
+                            response.text().then(text => alert(`Failed to update grid information: ${text}`));
+                        }
+                    })
+                    .catch(error => console.error('Error updating grid information:', error));
+            })
+            .catch(error => console.error('Error fetching existing configuration:', error));
     }
 
     function storeGrid() {
@@ -275,6 +381,84 @@
                     select.appendChild(option);
                 });
             });
+    }
+
+    function fetchGridInfo() {
+        const gridPosition = document.getElementById('gridPosition').value;
+        if (!gridPosition) return;
+
+        fetch('/api/Robot/GetConfig')
+            .then(response => response.json())
+            .then(config => {
+                const gridLocation = config.robot.locations.find(loc => loc.name === `GridStore${gridPosition}`);
+                if (gridLocation) {
+                    document.getElementById('gridBoxName').value = gridLocation.name || '';
+                    document.getElementById('sampleName').value = gridLocation.sampleName || '';
+                    document.getElementById('gridPosition').value = gridLocation.point || '';
+                } else {
+                    document.getElementById('gridBoxName').value = '';
+                    document.getElementById('sampleName').value = '';
+                    document.getElementById('gridPosition').value = '';
+                }
+            })
+            .catch(error => console.error('Error fetching grid info:', error));
+    }
+
+
+    function fetchConfig() {
+        fetch('/api/Robot/GetConfig')
+            .then(response => response.json())
+            .then(config => {
+                document.getElementById('prep_delay').value = config.biojet_process.prep_delay;
+                document.getElementById('spray_time').value = config.biojet_process.spray_time;
+                document.getElementById('blot_time').value = config.biojet_process.blot_time;
+                document.getElementById('clean_time').value = config.biojet_process.clean_time;
+                document.getElementById('clean_cycles').value = config.biojet_process.clean_cycles;
+                document.getElementById('timeout_blot_motion').value = config.biojet_process.timeout_blot_motion;
+
+                const limzMatch = config.robot.gridStoreJumpParameters.command.match(/LimZ\s*(-?\d+)/);
+                document.getElementById('limz').value = limzMatch ? parseInt(limzMatch[1]) : 0;
+
+                document.getElementById('speed').value = config.robot.defaultMotionParams.speed;
+                document.getElementById('accel').value = config.robot.defaultMotionParams.accel;
+                document.getElementById('decel').value = config.robot.defaultMotionParams.decel;
+            })
+            .catch(error => console.error('Error fetching configuration:', error));
+    }
+
+    function updateConfig() {
+        fetch('/api/Robot/GetConfig')
+            .then(response => response.json())
+            .then(existingConfig => {
+                // Update the existing configuration with new values
+                existingConfig.biojet_process.prep_delay = parseInt(document.getElementById('prep_delay').value);
+                existingConfig.biojet_process.spray_time = parseInt(document.getElementById('spray_time').value);
+                existingConfig.biojet_process.blot_time = parseInt(document.getElementById('blot_time').value);
+                existingConfig.biojet_process.clean_time = parseInt(document.getElementById('clean_time').value);
+                existingConfig.biojet_process.clean_cycles = parseInt(document.getElementById('clean_cycles').value);
+                existingConfig.biojet_process.timeout_blot_motion = parseInt(document.getElementById('timeout_blot_motion').value);
+
+                existingConfig.robot.gridStoreJumpParameters.command = 'LimZ ' + parseInt(document.getElementById('limz').value);
+                existingConfig.robot.defaultMotionParams.speed = parseInt(document.getElementById('speed').value);
+                existingConfig.robot.defaultMotionParams.accel = parseInt(document.getElementById('accel').value);
+                existingConfig.robot.defaultMotionParams.decel = parseInt(document.getElementById('decel').value);
+
+                // Send the updated configuration back to the server
+                fetch('/api/Robot/UpdateConfig', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(existingConfig)
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Configuration updated successfully.');
+                        } else {
+                            response.text().then(text => alert(`Failed to update configuration: ${text}`));
+                        }
+                    })
+                    .catch(error => console.error('Error updating configuration:', error));
+            })
+            .catch(error => console.error('Error fetching existing configuration:', error));
     }
 
     function restartCommunication() {
@@ -325,7 +509,56 @@
         logContainer.scrollTop = logContainer.scrollHeight;
     }
 
+    function listhMedia() {
+        fetch('/api/Robot/AvailableMedia')
+            .then(response => response.json())
+            .then(data => {
+                const imageSelect = document.getElementById("imageSelect");
+                const videoSelect = document.getElementById("videoSelect");
+                imageSelect.innerHTML = '';
+                videoSelect.innerHTML = '';
+
+                data.images.forEach(file => {
+                    const option = document.createElement("option");
+                    option.value = file;
+                    option.textContent = file;
+                    imageSelect.appendChild(option);
+                });
+
+                data.videos.forEach(file => {
+                    const option = document.createElement("option");
+                    option.value = file;
+                    option.textContent = file;
+                    videoSelect.appendChild(option);
+                });
+            });
+    }
+
+    function downloadSelectedImage() {
+        const fileName = document.getElementById("imageSelect").value;
+        window.location.href = `/api/Robot/DownloadImage/${fileName}`;
+    }
+
+    function downloadSelectedVideo() {
+        const fileName = document.getElementById("videoSelect").value;
+        window.location.href = `/api/Robot/DownloadVideo/${fileName}`;
+    }
+
+    function displaySelectedImage() {
+        const fileName = document.getElementById("imageSelect").value;
+        document.getElementById("displayImage").src = `/Documents/camera-recordings/${fileName}`;
+    }
+
+    function displaySelectedVideo() {
+        const fileName = document.getElementById("videoSelect").value;
+        const videoElement = document.getElementById("displayVideo");
+        videoElement.src = `/Documents/camera-recordings/${fileName}`;
+        videoElement.load();
+    }
+
     window.onload = function () {
         fetchPorts();
+        listhMedia();
+        fetchConfig();
     };
 </script>

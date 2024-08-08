@@ -4,6 +4,9 @@ using SprayingSystem.Models;
 using SprayingSystem.ViewModels;
 using System.IO;
 using System.IO.Ports;
+using System.Linq;
+using System.Text.Json;
+using SprayingSystem.Models;
 
 namespace SprayingSystem.Controllers
 {
@@ -15,6 +18,7 @@ namespace SprayingSystem.Controllers
         private readonly AppViewModel _appViewModel;
         private readonly SerialPortService _serialPortService;
         private readonly RecordingService _recordingService;
+        private readonly string _mediaFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "camera-recordings");
 
         public RobotController(AppViewModel appViewModel, IHubContext<LogHub> hubContext, SerialPortService serialPortService, RecordingService recordingService)
         {
@@ -105,17 +109,6 @@ namespace SprayingSystem.Controllers
             return Ok();
         }
 
-        [HttpPost("EditConfigSettings")]
-        public async Task<IActionResult> EditConfigSettings()
-        {
-            var logMessage = "Editing Config Settings...";
-            _appViewModel.LogAction(logMessage);
-            _appViewModel.EditConfigSettingsCmd.Execute(null);
-
-            await _hubContext.Clients.All.SendAsync("ReceiveLog", logMessage);
-            return Ok();
-        }
-
         [HttpPost("PointTeachingPresenter")]
         public async Task<IActionResult> PointTeachingPresenter()
         {
@@ -139,7 +132,6 @@ namespace SprayingSystem.Controllers
         }
 
         /*
-
         [HttpPost("CleanSprayer")]
         public async Task<IActionResult> CleanSprayer()
         {
@@ -226,7 +218,7 @@ namespace SprayingSystem.Controllers
         public IActionResult GetAvailablePorts()
         {
             var ports = SerialPort.GetPortNames();
-            _appViewModel.LogAction("Available ports: " + string.Join(", ", ports));
+            // _appViewModel.LogAction("Available ports: " + string.Join(", ", ports));
             return Ok(ports);
         }
 
@@ -265,6 +257,41 @@ namespace SprayingSystem.Controllers
             return NotFound();
         }
 
+        // Media Actions
+        [HttpGet("AvailableMedia")]
+        public IActionResult GetAvailableMedia()
+        {
+            var images = Directory.GetFiles(_mediaFolderPath, "*.jpg").Select(Path.GetFileName).ToList();
+            var videos = Directory.GetFiles(_mediaFolderPath, "*.mp4").Select(Path.GetFileName).ToList();
+
+            return Ok(new { images, videos });
+        }
+
+        [HttpGet("DownloadImage/{fileName}")]
+        public IActionResult DownloadImage(string fileName)
+        {
+            var filePath = Path.Combine(_mediaFolderPath, fileName);
+            if (System.IO.File.Exists(filePath))
+            {
+                var bytes = System.IO.File.ReadAllBytes(filePath);
+                return File(bytes, "image/jpeg", fileName);
+            }
+            return NotFound();
+        }
+
+        [HttpGet("DownloadVideo/{fileName}")]
+        public IActionResult DownloadVideo(string fileName)
+        {
+            var filePath = Path.Combine(_mediaFolderPath, fileName);
+            if (System.IO.File.Exists(filePath))
+            {
+                var bytes = System.IO.File.ReadAllBytes(filePath);
+                return File(bytes, "video/mp4", fileName);
+            }
+            return NotFound();
+        }
+
+        // Grid Actions
 
         [HttpPost("UpdateGridInfo")]
         public IActionResult UpdateGridInfo([FromBody] GridInfo gridInfo)
@@ -278,6 +305,7 @@ namespace SprayingSystem.Controllers
             }
             return BadRequest(ModelState);
         }
+
 
         [HttpPost("StoreGrid")]
         public IActionResult StoreGrid()
@@ -299,6 +327,35 @@ namespace SprayingSystem.Controllers
 
 
         // Process Options Actions
+        [HttpGet("GetConfig")]
+        public IActionResult GetConfig()
+        {
+            try
+            {
+                var config = _appViewModel.Configuration;
+                return Ok(config);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpPost("UpdateConfig")]
+        public IActionResult UpdateConfig([FromBody] SprayingSystemConfig config)
+        {
+            try
+            {
+                config.Save(SprayingSystemConfig.FileName);
+                _appViewModel.ReloadConfiguration(); // Reload the configuration
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
 
         // Get current process options
         [HttpGet("ProcessOptions")]

@@ -36,17 +36,6 @@ namespace SprayingSystem.Controllers
             return RedirectToAction("Logs");
         }
 
-        public IActionResult Logs()
-        {
-            var logs = _appViewModel.GetLogs();
-            return View(logs);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

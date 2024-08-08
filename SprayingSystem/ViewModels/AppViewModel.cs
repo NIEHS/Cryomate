@@ -28,7 +28,6 @@ namespace SprayingSystem.ViewModels
 
         private ICommand _powerDownCmd;
         private ICommand _sprayAndPlungeCmd;
-        private ICommand _editConfigSettingsCmd;
 
         // private MediaElement _rpiVideoPlayer;
 
@@ -53,7 +52,6 @@ namespace SprayingSystem.ViewModels
 
             _powerDownCmd = new RelayCommand(PowerDown, CanPowerDown);
             _sprayAndPlungeCmd = new RelayCommand(SprayAndPlunge, RobotViewModel.CanMove);
-            _editConfigSettingsCmd = new RelayCommand(EditConfigSettings, obj => true);
 
             //RpiViewModel.RpiVideoPlayer = wpfWindow.RpiVideoPlayer;
 
@@ -85,7 +83,7 @@ namespace SprayingSystem.ViewModels
             get { return _robotViewModel.RobotVariablesViewModel; }
         }
 
-  
+
         public CameraViewModel CameraViewModel
         {
             get { return _cameraViewModel; }
@@ -137,7 +135,7 @@ namespace SprayingSystem.ViewModels
 
         public ICommand SprayAndPlungeCmd => _sprayAndPlungeCmd;
 
-        public ICommand EditConfigSettingsCmd => _editConfigSettingsCmd;
+        public SprayingSystemConfig Configuration => _userOptions.Options;
 
         #region Private
 
@@ -176,7 +174,27 @@ namespace SprayingSystem.ViewModels
                 _logProvider);
         }
 
+        public void SaveConfiguration()
+        {
+            _userOptions.SaveSprayingSystemConfiguration();
+        }
 
+        public void ReloadConfiguration()
+        {
+            _userOptions.ReloadSprayingSystemConfiguration(_logProvider);
+            ApplyConfigurationChanges();
+        }
+
+        private void ApplyConfigurationChanges()
+        {
+            RobotViewModel.OnConfigSettingsUpdate();
+            RobotVariablesViewModel.OnConfigSettingsUpdate();
+            CameraViewModel.OnConfigSettingsUpdate();
+            ProcessOptionsViewModel.OnConfigSettingsUpdate();
+        }
+
+
+        /*
         private void EditConfigSettings(object obj)
         {
             var _window = new JsonTreeView(SprayingSystemConfig.FileName, _logProvider);
@@ -215,6 +233,7 @@ namespace SprayingSystem.ViewModels
             // RpiViewModel.OnConfigSettingsUpdate();
             ProcessOptionsViewModel.OnConfigSettingsUpdate();
         }
+        */
 
         #endregion
     }

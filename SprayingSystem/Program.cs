@@ -1,11 +1,16 @@
 using SprayingSystem.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var inMemoryLogProvider = new InMemoryLogProvider();
 builder.Logging.AddProvider(inMemoryLogProvider);
-builder.Services.AddSingleton(inMemoryLogProvider);  // Make it available for DI
+builder.Services.AddSingleton(inMemoryLogProvider);
 
 // Add services to the container.
 builder.Services.AddSignalR();
@@ -31,6 +36,18 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// Serve static files from the "camera-recordings" directory in the user's Documents folder
+var cameraRecordingsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "camera-recordings");
+if (!Directory.Exists(cameraRecordingsPath))
+{
+    Directory.CreateDirectory(cameraRecordingsPath);
+}
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(cameraRecordingsPath),
+    RequestPath = "/Documents/camera-recordings"
+});
 
 app.UseRouting();
 
