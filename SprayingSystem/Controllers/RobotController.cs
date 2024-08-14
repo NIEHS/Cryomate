@@ -63,6 +63,17 @@ namespace SprayingSystem.Controllers
             return Ok();
         }
 
+        [HttpPost("ResetRobot")]
+        public async Task<IActionResult> ResetRobot()
+        {
+            var logMessage = "Resetting Robot...";
+            _appViewModel.LogAction(logMessage);
+            _appViewModel.RobotViewModel.ResetCmd.Execute(null);
+
+            await _hubContext.Clients.All.SendAsync("ReceiveLog", logMessage);
+            return Ok();
+        }
+
         [HttpPost("MoveToLoadTweezers")]
         public async Task<IActionResult> MoveToLoadTweezers()
         {
@@ -80,6 +91,17 @@ namespace SprayingSystem.Controllers
             var logMessage = "Executing MoveToSprayPosition...";
             _appViewModel.LogAction(logMessage);
             _appViewModel.RobotViewModel.MoveToSprayPositionCmd.Execute(null);
+
+            await _hubContext.Clients.All.SendAsync("ReceiveLog", logMessage);
+            return Ok();
+        }
+
+        [HttpPost("PlungeProcess")]
+        public async Task<IActionResult> PlungeProcess()
+        {
+            var logMessage = "Executing PlungeProcess...";
+            _appViewModel.LogAction(logMessage);
+            _appViewModel.SprayAndPlungeCmd.Execute(null);
 
             await _hubContext.Clients.All.SendAsync("ReceiveLog", logMessage);
             return Ok();
@@ -375,6 +397,8 @@ namespace SprayingSystem.Controllers
                 _appViewModel.ProcessOptionsViewModel.RecordSpray = options.RecordSpray;
                 _appViewModel.ProcessOptionsViewModel.RpiRecordSpray = options.RpiRecordSpray;
                 _appViewModel.ProcessOptionsViewModel.Spray = options.Spray;
+                _appViewModel.ProcessOptionsViewModel.Spray_SlowSpray = options.Spray_SlowSpray;
+                _appViewModel.ProcessOptionsViewModel.Spray_FastSpray = options.Spray_FastSpray;
                 _appViewModel.ProcessOptionsViewModel.Blot = options.Blot;
                 _appViewModel.ProcessOptionsViewModel.Blot_BackBlot = options.Blot_BackBlot;
                 _appViewModel.ProcessOptionsViewModel.Blot_FrontBlot = options.Blot_FrontBlot;

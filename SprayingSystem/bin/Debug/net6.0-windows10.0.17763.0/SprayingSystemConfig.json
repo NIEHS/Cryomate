@@ -110,7 +110,7 @@
       "zOffset": 0,
       "archNumber": 0,
       "CP": false,
-      "command": "LimZ -59"
+      "command": "LimZ -55"
     }
   },
   "biojet_process": {
@@ -119,6 +119,6 @@
     "blot_time": 0,
     "clean_time": 200,
     "clean_cycles": 5,
-    "timeout_blot_motion": 200
+    "timeout_blot_motion": 2000
   }
 }

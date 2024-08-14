@@ -14,42 +14,58 @@ namespace SprayingSystem.SprayingProcess
             RobotVariablesModel RobotVariablesModel,
             RobotViewModel RobotViewModel,
             CameraViewModel CameraViewModel,
-            // RpiViewModel RpiViewModel,
             InMemoryLogProvider logProvider)
         {
             logProvider.CreateLogger(nameof(AppViewModel)).LogInformation("Process: Prepare And Plunge");
 
             if (ProcessOptionsViewModel.RecordSpray)
-                CameraViewModel.StartRecordingCmd.Execute(null);
-
-            // The Raspberry Pi has a camera that can take pictures.
-            if (ProcessOptionsViewModel.RpiRecordSpray)
             {
-                // RpiViewModel.StartVideoRecordingSprayCmd.Execute(null);
-                // Thread.Sleep(RpiViewModel.VideoStartUpDelayMillisec);
+                CameraViewModel.StartRecordingCmd.Execute(null);
             }
 
-            // this time should be only the spray time + preparation delay (this should always be equal to prep_delay since raspberry pi is not used)
+            /*
+             * Move to the spray position
+             * Blot solenoid forward
+             * Two Options:
+             * Fast Spray true in ProcessOptionsViewModel: Spray on for spray_time
+             * Slow Spray true in ProcessOptionsViewModel: Spray on after prep_delay for spray_time
+             * Blot soleoid backward
+             * Move to plunge position
+             */
+
+            // this time should be only the spray time since preparation delay came from RPi
             int totalWaitTime = TotalTimeToWaitForSpraying(ProcessOptionsViewModel, RobotVariablesModel);
+            int prepDelay = GetPrepDelay(ProcessOptionsViewModel, RobotVariablesModel);
 
             if (ProcessOptionsViewModel.Spray)
             {
                 logProvider.CreateLogger(nameof(AppViewModel)).LogInformation("Process: Spraying");
-                //RpiViewModel.SprayCmd.Execute(null);
+
+                RobotViewModel.MoveToSprayPositionCmd.Execute(null);
+
+                Thread.Sleep(1000);
 
                 RobotViewModel.blotSolenoidFwdCommand(null);
 
                 Thread.Sleep(totalWaitTime);
 
-                RobotViewModel.sprayOnCommand(null);
-                Thread.Sleep(int.Parse(RobotVariablesModel.SprayTime));
-                RobotViewModel.sprayOffCommand(null);
+                if(ProcessOptionsViewModel.Spray_FastSpray)
+                {
+                    RobotViewModel.sprayOnCommand(null);
+                    Thread.Sleep(int.Parse(RobotVariablesModel.SprayTime));
+                    RobotViewModel.sprayOffCommand(null);
+                }
+                else
+                {
+                    Thread.Sleep(prepDelay);
+                    RobotViewModel.sprayOnCommand(null);
+                    Thread.Sleep(int.Parse(RobotVariablesModel.SprayTime));
+                    RobotViewModel.sprayOffCommand(null);
+                }
+
 
                 Thread.Sleep(int.Parse(RobotVariablesModel.BlotTime));
                 RobotViewModel.blotSolenoidBackCommand(null);
-
-                //RpiViewModel.BlotSolenoidReverseCmd.Execute(null);
-
             }
 
             if (ProcessOptionsViewModel.Blot)
@@ -62,8 +78,6 @@ namespace SprayingSystem.SprayingProcess
                     RobotViewModel.MoveToBackBlotPosition(null);
                     Thread.Sleep(timeoutBlotMotion);
 
-                    //RpiViewModel.BlotSolenoidCmd.Execute(null);
-                    //RobotViewModel.blotSolenoidCommand(null);
                     RobotViewModel.blotSolenoidFwdCommand(null);
 
                     // Wait for the solenoid to actuate.
@@ -117,7 +131,6 @@ namespace SprayingSystem.SprayingProcess
                 //RpiViewModel.BlotSolenoidReverseCmd.Execute(null);
                 //Thread.Sleep(int.Parse(RobotVariablesModel.BlotTime));
             }
-            
             */
             RobotViewModel.MoveToPlungePosition(null);
 
@@ -152,8 +165,7 @@ namespace SprayingSystem.SprayingProcess
 
             if (processOptionsViewModel.Spray)
             {
-                // totalWaitTime += rpiViewModel.SprayPreparationDelay;
-                //totalWaitTime += GetSprayTime(processOptionsViewModel, robotVariablesModel, rpiViewModel);
+                totalWaitTime += GetSprayTime(processOptionsViewModel, robotVariablesModel);
             }
 
             //totalWaitTime += GetBlotTime(processOptionsViewModel, robotVariablesModel);
@@ -168,6 +180,19 @@ namespace SprayingSystem.SprayingProcess
             if (processOptionsViewModel.Spray)
             {
                 if (!string.IsNullOrEmpty(robotVariablesModel.SprayTime))
+                    return int.Parse(robotVariablesModel.SprayTime);
+            }
+
+            return 0;
+        }
+
+        public static int GetPrepDelay(
+        ProcessOptionsViewModel processOptionsViewModel,
+        RobotVariablesModel robotVariablesModel)
+        {
+            if (processOptionsViewModel.Spray)
+            {
+                if (!string.IsNullOrEmpty(robotVariablesModel.PrepTime))
                     return int.Parse(robotVariablesModel.SprayTime);
             }
 

@@ -10,11 +10,16 @@ namespace SprayingSystem.ViewModels
         private bool _blot;
         private bool _BackBlot = true;
         private bool _FrontBlot = false;
+        private bool _FastSpray = true;
+        private bool _SlowSpray = false;
         private bool _spray;
         private bool _recordSpray;
         private bool _rpiRecordSpray;
         private bool _sonicateTweezers;
 
+        public ProcessOptionsViewModel()
+        {
+        }
 
         public ProcessOptionsViewModel(UserOptions userOptions, InMemoryLogProvider logProvider)
         {
@@ -50,6 +55,28 @@ namespace SprayingSystem.ViewModels
                 OnPropertyChanged();
             }
         }
+
+
+        public bool Spray_FastSpray
+        {
+            get { return _FastSpray; }
+            set
+            {
+                _FastSpray = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool Spray_SlowSpray
+        {
+            get { return _SlowSpray; }
+            set
+            {
+                _SlowSpray = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public bool Blot
         {

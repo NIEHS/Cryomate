@@ -24,7 +24,7 @@
                         <button onclick="sendCommand('ConnectCmd')" class="btn btn-success">Connect Robot</button>
                         <button onclick="sendCommand('HighPowerOn')" class="btn btn-success">High Power On</button>
                         <button onclick="sendCommand('PowerDown')" class="btn btn-danger">Power Down</button>
-                        <button onclick="sendCommand('Reset')" class="btn btn-warning">Reset</button>
+                        <button onclick="sendCommand('ResetRobot')" class="btn btn-warning">Reset</button>
                     </div>
                 </div>
                 <div class="col-md-12 mt-2">
@@ -38,26 +38,33 @@
                 <div class="col-md-12 mt-2">
                     <div style="display: flex; justify-content: space-between; gap: 10px;">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="recordSpray">
+                            <input class="form-check-input" type="checkbox" id="recordSpray" onchange="updateProcessOptions()">
                             <label class="form-check-label" for="recordSpray">Record Spray</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="spray">
+                            <input class="form-check-input" type="checkbox" id="spray" onchange="toggleSprayOptions(); updateProcessOptions()">
                             <label class="form-check-label" for="spray">Spray</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="blot" onchange="toggleBlotOptions();">
+                            <input class="form-check-input" type="radio" name="sprayType" value="fast" id="fastSpray" onchange="updateProcessOptions()" disabled>
+                            <label class="form-check-label" for="fastSpray">Fast Spray</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="sprayType" value="slow" id="slowSpray" onchange="updateProcessOptions()" disabled>
+                            <label class="form-check-label" for="slowSpray">Slow Spray</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="blot" onchange="toggleBlotOptions(); updateProcessOptions();">
                             <label class="form-check-label" for="blot">Blot</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="blotType" value="back" id="backBlot" disabled>
+                            <input class="form-check-input" type="radio" name="blotType" value="back" id="backBlot" onchange="updateProcessOptions()" disabled>
                             <label class="form-check-label" for="backBlot">Back Blot</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="blotType" value="front" id="frontBlot" disabled>
+                            <input class="form-check-input" type="radio" name="blotType" value="front" id="frontBlot" onchange="updateProcessOptions()" disabled>
                             <label class="form-check-label" for="frontBlot">Front Blot</label>
                         </div>
-                        <button type="submit" onclick="updateProcessOptions()" class="btn btn-secondary">Save Options</button>
                     </div>
                 </div>
                 <div class="col-md-12 mt-2">
@@ -65,7 +72,7 @@
                         <input type="text" id="gridBoxName" class="form-control" placeholder="Grid Box Name" />
                         <input type="text" id="sampleName" class="form-control" placeholder="Sample Name" />
                         <input type="number" id="gridPosition" class="form-control" placeholder="Grid Position" min="1" max="8" onchange="fetchGridInfo()" />
-                        <button class="btn btn-primary" onclick="updateGridInfo()">Save Grid Info</button>
+                        <button class="btn btn-primary" onclick="updateGridInfo()">Save</button>
                     </div>
                 </div>
                 <div class="col-md-12 mt-2">
@@ -76,50 +83,28 @@
                         <button onclick="storeGrid()" class="btn btn-secondary">Store Grid</button>
                     </div>
                 </div>
-                <div class="col-md-12 mt-4">
-                    <h2>Update Configuration</h2>
+                <div class="col-md-12 mt-2">
                     <form id="configForm" onsubmit="event.preventDefault(); updateConfig();">
-                        <div class="form-group">
-                            <label for="prep_delay">Prep Delay:</label>
-                            <input type="number" id="prep_delay" class="form-control" required />
+                        <div class="d-flex justify-content-between gap-2">
+                            <div class="form-group">
+                                <select id="configVariable" class="form-control" onchange="fetchCurrentValue()" required>
+                                    <option value="biojet_process.prep_delay">Prep Delay</option>
+                                    <option value="biojet_process.spray_time">Spray Time</option>
+                                    <option value="biojet_process.blot_time">Blot Time</option>
+                                    <option value="biojet_process.clean_time">Clean Time</option>
+                                    <option value="biojet_process.clean_cycles">Clean Cycles</option>
+                                    <option value="biojet_process.timeout_blot_motion">Timeout Blot Motion</option>
+                                    <option value="robot.gridStoreJumpParameters.command">Grid Store Jump Parameter (LimZ)</option>
+                                    <option value="robot.defaultMotionParams.speed">Default Motion Speed</option>
+                                    <option value="robot.defaultMotionParams.accel">Default Motion Acceleration</option>
+                                    <option value="robot.defaultMotionParams.decel">Default Motion Deceleration</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="configValue" class="form-control" required />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Value</button>
                         </div>
-                        <div class="form-group">
-                            <label for="spray_time">Spray Time:</label>
-                            <input type="number" id="spray_time" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="blot_time">Blot Time:</label>
-                            <input type="number" id="blot_time" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="clean_time">Clean Time:</label>
-                            <input type="number" id="clean_time" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="clean_cycles">Clean Cycles:</label>
-                            <input type="number" id="clean_cycles" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="timeout_blot_motion">Timeout Blot Motion:</label>
-                            <input type="number" id="timeout_blot_motion" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="limz">Grid Store Jump Parameter (LimZ):</label>
-                            <input type="number" id="limz" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="speed">Default Motion Speed:</label>
-                            <input type="number" id="speed" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="accel">Default Motion Acceleration:</label>
-                            <input type="number" id="accel" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="decel">Default Motion Deceleration:</label>
-                            <input type="number" id="decel" class="form-control" required />
-                        </div>
-                        <button type="submit" class="btn btn-primary">Update Configuration</button>
                     </form>
                 </div>
             </div>
@@ -225,6 +210,14 @@
 <script>
     const logContainer = document.getElementById('logContainer');
 
+    function logMessage(message) {
+        const logContainer = document.getElementById('logContainer');
+        const div = document.createElement('div');
+        div.textContent = message;
+        logContainer.appendChild(div);
+        scrollToBottom();
+    }
+
     function scrollToBottom() {
         logContainer.scrollTop = logContainer.scrollHeight;
     }
@@ -264,37 +257,36 @@
             method: 'POST'
         }).then(response => {
             if (response.ok) {
-                alert(`${command} command executed successfully.`);
+                logMessage(`${command} command executed successfully.`);
             } else {
-                alert(`Failed to execute ${command} command.`);
+                logMessage(`Failed to execute ${command} command.`);
             }
         }).catch(error => {
             console.error('Error:', error);
-            alert(`Error executing ${command} command.`);
+            logMessage(`Error executing ${command} command.`);
         });
     }
 
     function updateProcessOptions() {
+        const blotChecked = document.getElementById('blot').checked;
+        const sprayChecked = document.getElementById('spray').checked;
+
         const options = {
             RecordSpray: document.getElementById('recordSpray').checked,
-            RpiRecordSpray: document.getElementById('rpiRecordSpray').checked,
-            Spray: document.getElementById('spray').checked,
-            SonicateTweezers: document.getElementById('sonicateTweezers').checked,
-            Blot: document.getElementById('blot').checked,
-            Blot_BackBlot: document.getElementById('backBlot').checked,
-            Blot_FrontBlot: document.getElementById('frontBlot').checked
+            RpiRecordSpray: document.getElementById('rpiRecordSpray')?.checked || false,
+            Spray: sprayChecked,
+            Spray_FastSpray: sprayChecked ? document.getElementById('fastSpray').checked : false,
+            Spray_SlowSpray: sprayChecked ? document.getElementById('slowSpray').checked : false,
+            SonicateTweezers: document.getElementById('sonicateTweezers')?.checked || false,
+            Blot: blotChecked,
+            Blot_BackBlot: blotChecked ? document.getElementById('backBlot').checked : false,
+            Blot_FrontBlot: blotChecked ? document.getElementById('frontBlot').checked : false
         };
 
         fetch('/api/Robot/UpdateProcessOptions', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(options)
-        }).then(response => {
-            if (response.ok) {
-                alert('Process options updated successfully.');
-            } else {
-                alert('Failed to update options.');
-            }
         }).catch(error => console.error('Error updating options:', error));
     }
 
@@ -302,6 +294,20 @@
         const blotChecked = document.getElementById('blot').checked;
         document.getElementById('backBlot').disabled = !blotChecked;
         document.getElementById('frontBlot').disabled = !blotChecked;
+        if (!blotChecked) {
+            document.getElementById('backBlot').checked = false;
+            document.getElementById('frontBlot').checked = false;
+        }
+    }
+
+    function toggleSprayOptions() {
+        const sprayChecked = document.getElementById('spray').checked;
+        document.getElementById('fastSpray').disabled = !sprayChecked;
+        document.getElementById('slowSpray').disabled = !sprayChecked;
+        if(!sprayChecked){
+            document.getElementById('fastSpray').checked = false;
+            document.getElementById('slowSpray').checked = false;
+        }
     }
 
     function updateGridInfo() {
@@ -327,9 +333,9 @@
                 })
                     .then(response => {
                         if (response.ok) {
-                            alert('Grid information updated successfully.');
+                            logMessage('Grid information updated successfully.');
                         } else {
-                            response.text().then(text => alert(`Failed to update grid information: ${text}`));
+                            response.text().then(text => logMessage(`Failed to update grid information: ${text}`));
                         }
                     })
                     .catch(error => console.error('Error updating grid information:', error));
@@ -341,9 +347,9 @@
         fetch('/api/Robot/StoreGrid', { method: 'POST' })
             .then(response => {
                 if (response.ok) {
-                    alert('Grid stored successfully.');
+                    logMessage('Grid stored successfully.');
                 } else {
-                    alert('Failed to store grid.');
+                    logMessage('Failed to store grid.');
                 }
             })
             .catch(error => console.error('Error storing grid:', error));
@@ -358,14 +364,16 @@
         }).then(response => {
             if (response.ok) {
                 clearLogs();
+                logMessage('Serial communication started.');
             } else {
-                response.text().then(text => alert(`Failed to start communication: ${text}`));
+                response.text().then(text => logMessage(`Failed to start communication: ${text}`));
             }
         });
     }
 
     function stopCommunication() {
-        fetch('/api/Robot/StopSerialPort', { method: 'POST' });
+        fetch('/api/Robot/StopSerialPort', { method: 'POST' })
+            .then(() => logMessage('Serial communication stopped.'));
     }
 
     function fetchPorts() {
@@ -405,45 +413,96 @@
     }
 
 
-    function fetchConfig() {
+    function fetchCurrentValue() {
+        const configVariable = document.getElementById('configVariable').value;
+
         fetch('/api/Robot/GetConfig')
             .then(response => response.json())
             .then(config => {
-                document.getElementById('prep_delay').value = config.biojet_process.prep_delay;
-                document.getElementById('spray_time').value = config.biojet_process.spray_time;
-                document.getElementById('blot_time').value = config.biojet_process.blot_time;
-                document.getElementById('clean_time').value = config.biojet_process.clean_time;
-                document.getElementById('clean_cycles').value = config.biojet_process.clean_cycles;
-                document.getElementById('timeout_blot_motion').value = config.biojet_process.timeout_blot_motion;
+                let currentValue;
 
-                const limzMatch = config.robot.gridStoreJumpParameters.command.match(/LimZ\s*(-?\d+)/);
-                document.getElementById('limz').value = limzMatch ? parseInt(limzMatch[1]) : 0;
+                switch (configVariable) {
+                    case 'biojet_process.prep_delay':
+                        currentValue = config.biojet_process.prep_delay;
+                        break;
+                    case 'biojet_process.spray_time':
+                        currentValue = config.biojet_process.spray_time;
+                        break;
+                    case 'biojet_process.blot_time':
+                        currentValue = config.biojet_process.blot_time;
+                        break;
+                    case 'biojet_process.clean_time':
+                        currentValue = config.biojet_process.clean_time;
+                        break;
+                    case 'biojet_process.clean_cycles':
+                        currentValue = config.biojet_process.clean_cycles;
+                        break;
+                    case 'biojet_process.timeout_blot_motion':
+                        currentValue = config.biojet_process.timeout_blot_motion;
+                        break;
+                    case 'robot.gridStoreJumpParameters.command':
+                        const limzMatch = config.robot.gridStoreJumpParameters.command.match(/LimZ\s*(-?\d+)/);
+                        currentValue = limzMatch ? parseInt(limzMatch[1]) : 0;
+                        break;
+                    case 'robot.defaultMotionParams.speed':
+                        currentValue = config.robot.defaultMotionParams.speed;
+                        break;
+                    case 'robot.defaultMotionParams.accel':
+                        currentValue = config.robot.defaultMotionParams.accel;
+                        break;
+                    case 'robot.defaultMotionParams.decel':
+                        currentValue = config.robot.defaultMotionParams.decel;
+                        break;
+                    default:
+                        currentValue = 0;
+                        break;
+                }
 
-                document.getElementById('speed').value = config.robot.defaultMotionParams.speed;
-                document.getElementById('accel').value = config.robot.defaultMotionParams.accel;
-                document.getElementById('decel').value = config.robot.defaultMotionParams.decel;
+                document.getElementById('configValue').value = currentValue;
             })
             .catch(error => console.error('Error fetching configuration:', error));
     }
 
     function updateConfig() {
+        const configVariable = document.getElementById('configVariable').value;
+        const configValue = parseInt(document.getElementById('configValue').value);
+
         fetch('/api/Robot/GetConfig')
             .then(response => response.json())
             .then(existingConfig => {
-                // Update the existing configuration with new values
-                existingConfig.biojet_process.prep_delay = parseInt(document.getElementById('prep_delay').value);
-                existingConfig.biojet_process.spray_time = parseInt(document.getElementById('spray_time').value);
-                existingConfig.biojet_process.blot_time = parseInt(document.getElementById('blot_time').value);
-                existingConfig.biojet_process.clean_time = parseInt(document.getElementById('clean_time').value);
-                existingConfig.biojet_process.clean_cycles = parseInt(document.getElementById('clean_cycles').value);
-                existingConfig.biojet_process.timeout_blot_motion = parseInt(document.getElementById('timeout_blot_motion').value);
+                switch (configVariable) {
+                    case 'biojet_process.prep_delay':
+                        existingConfig.biojet_process.prep_delay = configValue;
+                        break;
+                    case 'biojet_process.spray_time':
+                        existingConfig.biojet_process.spray_time = configValue;
+                        break;
+                    case 'biojet_process.blot_time':
+                        existingConfig.biojet_process.blot_time = configValue;
+                        break;
+                    case 'biojet_process.clean_time':
+                        existingConfig.biojet_process.clean_time = configValue;
+                        break;
+                    case 'biojet_process.clean_cycles':
+                        existingConfig.biojet_process.clean_cycles = configValue;
+                        break;
+                    case 'biojet_process.timeout_blot_motion':
+                        existingConfig.biojet_process.timeout_blot_motion = configValue;
+                        break;
+                    case 'robot.gridStoreJumpParameters.command':
+                        existingConfig.robot.gridStoreJumpParameters.command = `LimZ ${configValue}`;
+                        break;
+                    case 'robot.defaultMotionParams.speed':
+                        existingConfig.robot.defaultMotionParams.speed = configValue;
+                        break;
+                    case 'robot.defaultMotionParams.accel':
+                        existingConfig.robot.defaultMotionParams.accel = configValue;
+                        break;
+                    case 'robot.defaultMotionParams.decel':
+                        existingConfig.robot.defaultMotionParams.decel = configValue;
+                        break;
+                }
 
-                existingConfig.robot.gridStoreJumpParameters.command = 'LimZ ' + parseInt(document.getElementById('limz').value);
-                existingConfig.robot.defaultMotionParams.speed = parseInt(document.getElementById('speed').value);
-                existingConfig.robot.defaultMotionParams.accel = parseInt(document.getElementById('accel').value);
-                existingConfig.robot.defaultMotionParams.decel = parseInt(document.getElementById('decel').value);
-
-                // Send the updated configuration back to the server
                 fetch('/api/Robot/UpdateConfig', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -451,9 +510,9 @@
                 })
                     .then(response => {
                         if (response.ok) {
-                            alert('Configuration updated successfully.');
+                            logMessage('Configuration updated successfully.');
                         } else {
-                            response.text().then(text => alert(`Failed to update configuration: ${text}`));
+                            response.text().then(text => logMessage(`Failed to update configuration: ${text}`));
                         }
                     })
                     .catch(error => console.error('Error updating configuration:', error));
@@ -473,12 +532,14 @@
 
     function startRecording() {
         recording = true;
-        fetch('/api/Robot/StartRecording', { method: 'POST' });
+        fetch('/api/Robot/StartRecording', { method: 'POST' })
+            .then(() => logMessage('Recording started.'));
     }
 
     function stopRecording() {
         recording = false;
-        fetch('/api/Robot/StopRecording', { method: 'POST' });
+        fetch('/api/Robot/StopRecording', { method: 'POST' })
+            .then(() => logMessage('Recording stopped.'));
     }
 
     function listRecordings() {
@@ -557,8 +618,14 @@
     }
 
     window.onload = function () {
+        fetchCurrentValue()
         fetchPorts();
         listhMedia();
         fetchConfig();
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function () {
+                this.blur();
+            });
+        });
     };
 </script>

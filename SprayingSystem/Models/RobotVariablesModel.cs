@@ -7,6 +7,7 @@ namespace SprayingSystem.Models
     {
         public string Date;
         public string SprayTime;
+        public string PrepTime;
         public string BlotTime;
         public string CleanTime;
         public string CleanCycles;
@@ -15,10 +16,12 @@ namespace SprayingSystem.Models
         public static string DateVarName = "Date";
 
         public static string SprayTimeVarName = "Spray_time";
+        public static string PrepDelayVarName = "Prep_delay";
         public static string BlotTimeVarName = "Blot_time";
         public static string CleanTimeVarName = "Clean_time";
         public static string CleanCyclesVarName = "Clean_cycles";
         public static string TimeoutBlotMotionName = "Timeout_blot_motion";
+
 
         public void SetValues(List<Tuple<string, string>> values)
         {
@@ -26,6 +29,8 @@ namespace SprayingSystem.Models
             {
                 if (pair.Item1.Equals(SprayTimeVarName))
                     SprayTime = pair.Item2;
+                else if (pair.Item1.Equals(PrepDelayVarName))
+                    PrepTime = pair.Item2;
                 else if (pair.Item1.Equals(BlotTimeVarName))
                     BlotTime = pair.Item2;
                 else if (pair.Item1.Equals(CleanTimeVarName))
@@ -44,6 +49,7 @@ namespace SprayingSystem.Models
             variables.Add(RobotVariablesModel.DateVarName, DateTime.Now.ToString());
 
             variables.Add(RobotVariablesModel.SprayTimeVarName, process.spray_time.ToString());
+            variables.Add(RobotVariablesModel.PrepDelayVarName, process.prep_delay.ToString());
             variables.Add(RobotVariablesModel.BlotTimeVarName, process.blot_time.ToString());
             variables.Add(RobotVariablesModel.CleanTimeVarName, process.clean_time.ToString());
             variables.Add(RobotVariablesModel.CleanCyclesVarName, process.clean_cycles.ToString());

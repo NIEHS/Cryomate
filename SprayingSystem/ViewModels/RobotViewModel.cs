@@ -528,13 +528,13 @@ namespace SprayingSystem.ViewModels
             try
             {
                 if (_robotDriver.GoGridStorePosition(position))
-                    _logProvider.CreateLogger(nameof(AppViewModel)).LogInformation("Move to Spray position");
+                    _logProvider.CreateLogger(nameof(AppViewModel)).LogInformation("Move to Grid position");
                 else
-                    _logProvider.CreateLogger(nameof(AppViewModel)).LogError("Move to Spray position Failed.");
+                    _logProvider.CreateLogger(nameof(AppViewModel)).LogError("Move to Grid position Failed.");
             }
             catch (System.Exception exception)
             {
-                _logProvider.CreateLogger(nameof(AppViewModel)).LogError("Move to Spray position - error: " + exception.Message);
+                _logProvider.CreateLogger(nameof(AppViewModel)).LogError("Move to Grid position - error: " + exception.Message);
             }
             finally
             {
