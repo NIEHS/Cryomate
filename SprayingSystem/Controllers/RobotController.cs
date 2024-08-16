@@ -18,14 +18,25 @@ namespace SprayingSystem.Controllers
         private readonly AppViewModel _appViewModel;
         private readonly SerialPortService _serialPortService;
         private readonly RecordingService _recordingService;
+        private readonly IHostApplicationLifetime _appLifetime;
         private readonly string _mediaFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "camera-recordings");
 
-        public RobotController(AppViewModel appViewModel, IHubContext<LogHub> hubContext, SerialPortService serialPortService, RecordingService recordingService)
+        public RobotController(IHostApplicationLifetime appLifetime, AppViewModel appViewModel, IHubContext<LogHub> hubContext, SerialPortService serialPortService, RecordingService recordingService)
         {
+            _appLifetime = appLifetime;
             _appViewModel = appViewModel;
             _hubContext = hubContext;
             _serialPortService = serialPortService;
             _recordingService = recordingService;
+        }
+
+        // Application Actions
+
+        [HttpPost("Shutdown")]
+        public IActionResult Shutdown()
+        {
+            _appLifetime.StopApplication();
+            return Ok("Application is shutting down...");
         }
 
         // Robot Actions

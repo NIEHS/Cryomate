@@ -3,48 +3,63 @@
   "WorkspaceRootPath": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\controllers\\robotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:controllers\\robotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\sprayingsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:sprayingsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\viewmodels\\appviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:viewmodels\\appviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\sprayingprocess\\sprayandplungeprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:sprayingprocess\\sprayandplungeprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\models\\robotvariablesmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:models\\robotvariablesmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\sprayingsystemconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:sprayingsystemconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\viewmodels\\processoptionsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:viewmodels\\processoptionsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\robotdriver\\epsonrc7driverconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:robotdriver\\epsonrc7driverconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\robotdriver\\epsonrc7driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:robotdriver\\epsonrc7driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\viewmodels\\robotvariablesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:viewmodels\\robotvariablesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\models\\sprayingsystemconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:models\\sprayingsystemconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\controllers\\robotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:controllers\\robotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\viewmodels\\gridviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:viewmodels\\gridviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mft63\\OneDrive\\Desktop\\OUTPUT\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|c:\\users\\mft63\\onedrive\\github\\niehs\\cryomate\\sprayingsystem\\sprayingsystem.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{AB0AC315-18BA-4C98-BB25-9CAB2169F23D}|SprayingSystem.csproj|solutionrelative:sprayingsystem.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,150 +69,188 @@
       "DocumentGroups": [
         {
           "DockedWidth": 215,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RobotVariablesModel.cs",
-              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Models\\RobotVariablesModel.cs",
-              "RelativeDocumentMoniker": "Models\\RobotVariablesModel.cs",
-              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Models\\RobotVariablesModel.cs",
-              "RelativeToolTip": "Models\\RobotVariablesModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T17:44:28.889Z",
-              "EditorCaption": ""
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAgwCYAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-16T15:14:30.496Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
+              "Title": "EpsonRc7DriverConfig.cs",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\RobotDriver\\EpsonRc7DriverConfig.cs",
+              "RelativeDocumentMoniker": "RobotDriver\\EpsonRc7DriverConfig.cs",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\RobotDriver\\EpsonRc7DriverConfig.cs",
+              "RelativeToolTip": "RobotDriver\\EpsonRc7DriverConfig.cs",
+              "ViewState": "AQIAADwAAAAAAAAAAAAiwEoAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T15:14:13.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "EpsonRc7Driver.cs",
               "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\RobotDriver\\EpsonRc7Driver.cs",
               "RelativeDocumentMoniker": "RobotDriver\\EpsonRc7Driver.cs",
               "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\RobotDriver\\EpsonRc7Driver.cs",
               "RelativeToolTip": "RobotDriver\\EpsonRc7Driver.cs",
-              "ViewState": "AQIAAK8AAAAAAAAAAAAlwMYAAABEAAAA",
+              "ViewState": "AQIAAFsAAAAAAAAAAAASwHUAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T16:06:22.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T15:14:11.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "bootstrap.rtl.css.map",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAABJ3wAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-16T15:14:10.063Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ProcessOptionsViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\ViewModels\\ProcessOptionsViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\ProcessOptionsViewModel.cs",
-              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\ViewModels\\ProcessOptionsViewModel.cs",
-              "RelativeToolTip": "ViewModels\\ProcessOptionsViewModel.cs",
-              "ViewState": "AQIAACwAAAAAAAAAAAAIwAcAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T15:58:10.53Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RobotVariablesViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\ViewModels\\RobotVariablesViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\RobotVariablesViewModel.cs",
-              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\ViewModels\\RobotVariablesViewModel.cs",
-              "RelativeToolTip": "ViewModels\\RobotVariablesViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T15:50:53.31Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\ViewModels\\AppViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\AppViewModel.cs",
-              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\ViewModels\\AppViewModel.cs",
-              "RelativeToolTip": "ViewModels\\AppViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T15:47:46.353Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GridViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\ViewModels\\GridViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\GridViewModel.cs",
-              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\ViewModels\\GridViewModel.cs",
-              "RelativeToolTip": "ViewModels\\GridViewModel.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAawHYAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T15:30:37.139Z",
-              "EditorCaption": ""
+              "Title": "bootstrap.css.map",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAABk3wAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-16T15:14:08.551Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SprayingSystemConfig.json",
-              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystemConfig.json",
-              "RelativeDocumentMoniker": "SprayingSystemConfig.json",
-              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystemConfig.json",
-              "RelativeToolTip": "SprayingSystemConfig.json",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAHsAAAABAAAA",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAowCAAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-14T15:26:17.476Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T15:14:07.692Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SprayingSystemConfig.cs",
-              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Models\\SprayingSystemConfig.cs",
-              "RelativeDocumentMoniker": "Models\\SprayingSystemConfig.cs",
-              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Models\\SprayingSystemConfig.cs",
-              "RelativeToolTip": "Models\\SprayingSystemConfig.cs",
-              "ViewState": "AQIAAGsAAAAAAAAAAAAWwKAAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T12:17:44.895Z",
-              "EditorCaption": ""
+              "DocumentIndex": 4,
+              "Title": "additional-methods.js",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "RelativeToolTip": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "ViewState": "AQIAALgAAAAAAAAAAAAAAMcAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-16T15:14:06.316Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SprayAndPlungeProcess.cs",
-              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingProcess\\SprayAndPlungeProcess.cs",
-              "RelativeDocumentMoniker": "SprayingProcess\\SprayAndPlungeProcess.cs",
-              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingProcess\\SprayAndPlungeProcess.cs",
-              "RelativeToolTip": "SprayingProcess\\SprayAndPlungeProcess.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAYwDoAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T17:41:04.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAABcAAAAAAAAAAAAAAE8AAAB8AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T17:17:27.801Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-16T15:09:41.571Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 11,
               "Title": "RobotController.cs",
               "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Controllers\\RobotController.cs",
               "RelativeDocumentMoniker": "Controllers\\RobotController.cs",
               "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Controllers\\RobotController.cs",
               "RelativeToolTip": "Controllers\\RobotController.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAvwGoAAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T11:26:48.72Z",
+              "WhenOpened": "2024-08-16T15:08:57.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SprayingSystemConfig.json",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystemConfig.json",
+              "RelativeDocumentMoniker": "SprayingSystemConfig.json",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystemConfig.json",
+              "RelativeToolTip": "SprayingSystemConfig.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-16T15:01:55.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\Desktop\\OUTPUT\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Desktop\\OUTPUT\\appsettings.json",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\Desktop\\OUTPUT\\appsettings.json",
+              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\OUTPUT\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-16T14:55:30.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SprayingSystem",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystem.csproj",
+              "RelativeDocumentMoniker": "SprayingSystem.csproj",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystem.csproj",
+              "RelativeToolTip": "SprayingSystem.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-16T14:19:40.248Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SprayingSystem.csproj",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystem.csproj",
+              "RelativeDocumentMoniker": "SprayingSystem.csproj",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\SprayingSystem.csproj",
+              "RelativeToolTip": "SprayingSystem.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-16T14:16:02.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAApwB8AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T13:50:34.535Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\mft63\\OneDrive\\GitHub\\NIEHS\\Cryomate\\SprayingSystem\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-16T13:41:17.627Z"
             }
           ]
         }

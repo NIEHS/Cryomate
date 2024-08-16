@@ -23,6 +23,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <button class="btn btn-danger nav-link text-white" onclick="shutdownApplication()">Shutdown</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -40,5 +45,18 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        function shutdownApplication() {
+            fetch('/api/Robot/Shutdown', {
+                method: 'POST'
+            }).then(response => {
+                if (response.ok) {
+                    alert('Application is shutting down...');
+                } else {
+                    alert('Failed to shut down the application.');
+                }
+            }).catch(error => console.error('Error shutting down application:', error));
+        }
+    </script>
 </body>
 </html>

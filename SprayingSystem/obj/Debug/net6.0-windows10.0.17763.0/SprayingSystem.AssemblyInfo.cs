@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SprayingSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a669f9773cf6eb6ee846dbc6eb24d48efdc358c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a852ac9af9c6ba1fcf299c3d7f77539f4d2ad72")]
 [assembly: System.Reflection.AssemblyProductAttribute("SprayingSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SprayingSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.0.0.0")]

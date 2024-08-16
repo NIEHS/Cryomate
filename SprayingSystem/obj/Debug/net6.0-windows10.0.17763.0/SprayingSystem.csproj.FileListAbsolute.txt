@@ -85,7 +85,6 @@ C:\Users\mft63\OneDrive\GitHub\NIEHS\Cryomate\SprayingSystem\obj\Debug\net6.0-wi
 C:\Users\mft63\OneDrive\GitHub\NIEHS\Cryomate\SprayingSystem\obj\Debug\net6.0-windows10.0.17763.0\SprayingSystem.AssemblyInfoInputs.cache
 C:\Users\mft63\OneDrive\GitHub\NIEHS\Cryomate\SprayingSystem\obj\Debug\net6.0-windows10.0.17763.0\SprayingSystem.AssemblyInfo.cs
 C:\Users\mft63\OneDrive\GitHub\NIEHS\Cryomate\SprayingSystem\obj\Debug\net6.0-windows10.0.17763.0\SprayingSystem.csproj.CoreCompileInputs.cache
-C:\Users\mft63\OneDrive\GitHub\NIEHS\Cryomate\SprayingSystem\obj\Debug\net6.0-windows10.0.17763.0\SprayingSystem.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\mft63\OneDrive\GitHub\NIEHS\Cryomate\SprayingSystem\obj\Debug\net6.0-windows10.0.17763.0\SprayingSystem.RazorAssemblyInfo.cache
 C:\Users\mft63\OneDrive\GitHub\NIEHS\Cryomate\SprayingSystem\obj\Debug\net6.0-windows10.0.17763.0\SprayingSystem.RazorAssemblyInfo.cs
 C:\Users\mft63\OneDrive\GitHub\NIEHS\Cryomate\SprayingSystem\obj\Debug\net6.0-windows10.0.17763.0\SprayingSystem.sourcelink.json
